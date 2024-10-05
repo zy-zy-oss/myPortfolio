@@ -27,16 +27,24 @@ function initGame(width, height) {
 }
 
 const settings = document.getElementById("settings");
-const mobileBtn = settings.children[1];
-const notMobileBtn = settings.children[2];
+const mobileVerticalBtn = settings.children[1];
+const mobileHorizontalBtn = settings.children[2];
+const desktopBtn = settings.children[3];
 
-mobileBtn.addEventListener("click", () => {
-  dataManager.setIsMobile(true);
+mobileVerticalBtn.addEventListener("click", () => {
+  dataManager.setDeviceType("mobile-vertical");
   initGame(1080, 1920);
   settings.remove();
 });
-notMobileBtn.addEventListener("click", () => {
-  dataManager.setIsMobile(false);
+
+mobileHorizontalBtn.addEventListener("click", () => {
+  dataManager.setDeviceType("mobile-horizontal");
+  initGame(1920, 1080);
+  settings.remove();
+});
+
+desktopBtn.addEventListener("click", () => {
+  dataManager.setDeviceType("desktop");
   initGame(1920, 1080);
   settings.remove();
 });

@@ -1,6 +1,11 @@
 class DataManager {
-  setIsMobile(boolean) {
-    this.isMobile = boolean;
+  setDeviceType(deviceType) {
+    const possibleTypes = ["mobile-vertical", "mobile-horizontal", "desktop"];
+    if (!possibleTypes.includes(deviceType)) {
+      throw Error("Device type passed does not exist!");
+    }
+
+    this.deviceType = deviceType;
   }
 
   get(property) {
