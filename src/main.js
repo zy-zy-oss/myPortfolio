@@ -15,6 +15,20 @@ function initGame(width, height) {
     touchToMouse: true,
     debug: false,
     debugKey: "f1",
+    buttons: {
+      left: {
+        keyboard: ["a", "left"],
+      },
+      right: {
+        keyboard: ["d", "right"],
+      },
+      up: {
+        keyboard: ["w", "up"],
+      },
+      down: {
+        keyboard: ["s", "down"],
+      },
+    },
   });
   loadFont("mania", "/fonts/mania.ttf");
 
