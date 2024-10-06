@@ -4,6 +4,7 @@ import Player from "./entities/Player";
 import Section from "./components/Section";
 import Button from "./components/Button";
 import dataManager from "./managers/DataManager";
+import { Dpad } from "./components/Dpad";
 
 function initGame(width, height) {
   kaplay({
@@ -11,6 +12,9 @@ function initGame(width, height) {
     height,
     letterbox: true,
     pixelDensity: devicePixelRatio,
+    touchToMouse: true,
+    debug: false,
+    debugKey: "f1",
   });
   loadFont("mania", "/fonts/mania.ttf");
 
@@ -20,7 +24,9 @@ function initGame(width, height) {
     new Section(vec2(center().x - 300, center().y));
     new Section(vec2(center().x + 300, center().y));
 
-    const player = new Player(vec2(center()), 300);
+    const player = new Player(vec2(center()), 700);
+    new Dpad(vec2(150, 1600));
+    player.setControls();
   });
 
   go("portfolio-land");
@@ -32,19 +38,19 @@ const mobileHorizontalBtn = settings.children[2];
 const desktopBtn = settings.children[3];
 
 mobileVerticalBtn.addEventListener("click", () => {
-  dataManager.setDeviceType("mobile-vertical");
+  dataManager.deviceType = "mobile-vertical";
   initGame(1080, 1920);
   settings.remove();
 });
 
 mobileHorizontalBtn.addEventListener("click", () => {
-  dataManager.setDeviceType("mobile-horizontal");
+  dataManager.deviceType = "mobile-horizontal";
   initGame(1920, 1080);
   settings.remove();
 });
 
 desktopBtn.addEventListener("click", () => {
-  dataManager.setDeviceType("desktop");
+  dataManager.deviceType = "desktop";
   initGame(1920, 1080);
   settings.remove();
 });
