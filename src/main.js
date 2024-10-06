@@ -25,7 +25,9 @@ function initGame(width, height) {
     new Section(vec2(center().x + 300, center().y));
 
     const player = new Player(vec2(center()), 700);
-    new Dpad(vec2(150, 1600));
+    if (dataManager.deviceType === "mobile-vertical") new Dpad(vec2(150, 1600));
+    if (dataManager.deviceType === "mobile-horizontal")
+      new Dpad(vec2(100, 750));
     player.setControls();
   });
 
