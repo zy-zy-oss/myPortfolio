@@ -8,7 +8,6 @@ export default class LinkIcon {
         width: imageData.width,
         height: imageData.height,
       }),
-      area(),
       anchor("center"),
       pos(posVec2),
     ]);
@@ -20,12 +19,21 @@ export default class LinkIcon {
       pos(0, 100),
     ]);
 
+    this.switch = this.logo.add([
+      rect(60, 60),
+      color(Color.fromHex(PALETTE.color1)),
+      anchor("center"),
+      area(),
+      pos(0, 150),
+    ]);
+
     this.setOpenLinkHandler(link);
   }
 
   setOpenLinkHandler(link) {
-    this.logo.onCollide("player", () => {
-      // Open pop-up
+    this.switch.onCollide("player", (player) => {
+      const modal = document.querySelector(".modal");
+      modal.style.display = "flex";
     });
   }
 }

@@ -71,19 +71,6 @@ function initGame(width, height) {
         "https://github.com/jslegenddev"
       );
 
-      // const logo = newComponent.add([
-      //   sprite("github-logo", { width: 457.5 / 2, height: 359 / 2 }),
-      //   anchor("center"),
-      //   pos(300, 250),
-      // ]);
-
-      // logo.add([
-      //   text("GitHub", { font: "ibm-bold", size: 32 }),
-      //   color(Color.fromHex(PALETTE.color1)),
-      //   anchor("center"),
-      //   pos(0, 100),
-      // ]);
-
       tween(
         newComponent.opacity,
         1,
