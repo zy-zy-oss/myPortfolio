@@ -14,7 +14,7 @@ function initGame(width, height) {
     letterbox: true,
     pixelDensity: devicePixelRatio,
     touchToMouse: true,
-    debug: false,
+    debug: true, // TODO: set this back to false in prod
     debugKey: "f1",
     buttons: {
       left: {

@@ -12,7 +12,7 @@ export default class Section {
     ]);
 
     this.gameObj.add([
-      text(sectionName, { font: "mania", size: 48 }),
+      text(sectionName, { font: "mania", size: 64 }),
       color(PALETTE.color1),
       anchor("center"),
       pos(0, -150),
