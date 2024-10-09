@@ -104,8 +104,8 @@ span {
 .dpad {
   display: flex;
   position: fixed;
-  top: 70vh;
-  left: 25vw;
+  top: 60vh;
+  left: 15vw;
   z-index: 1;
   opacity: 0.4;
 }
@@ -154,5 +154,10 @@ span {
   .settings-btn {
     font-size: 2rem;
     margin-top: 3vh;
+  }
+
+  .dpad {
+    top: 70vh;
+    left: 25vw;
   }
 }
