@@ -9,7 +9,7 @@ export function VirtualDPad() {
     areTouchControlsEnabled && (
       <div className="dpad">
         <button
-          className="up"
+          className="dpad-btn-color up"
           onMouseDown={() => {
             DPadInput.isUpPressed = true;
             setDpadInput(DPadInput);
@@ -19,10 +19,10 @@ export function VirtualDPad() {
             setDpadInput(DPadInput);
           }}
         >
-          Up
+          ▲
         </button>
         <button
-          className="down"
+          className="dpad-btn-color down"
           onMouseDown={() => {
             DPadInput.isDownPressed = true;
             setDpadInput(DPadInput);
@@ -32,10 +32,10 @@ export function VirtualDPad() {
             setDpadInput(DPadInput);
           }}
         >
-          Down
+          ▼
         </button>
         <button
-          className="left"
+          className="dpad-btn-color left"
           onMouseDown={() => {
             DPadInput.isLeftPressed = true;
             setDpadInput(DPadInput);
@@ -45,10 +45,10 @@ export function VirtualDPad() {
             setDpadInput(DPadInput);
           }}
         >
-          Left
+          ◀
         </button>
         <button
-          className="right"
+          className="dpad-btn-color right"
           onMouseDown={() => {
             DPadInput.isRightPressed = true;
             setDpadInput(DPadInput);
@@ -58,7 +58,7 @@ export function VirtualDPad() {
             setDpadInput(DPadInput);
           }}
         >
-          Right
+          ▶
         </button>
       </div>
     )
