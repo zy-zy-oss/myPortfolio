@@ -1,11 +1,11 @@
 import { useAtom, useAtomValue } from "jotai";
-import { isVisibleAtom, selectedLinkAtom } from "../state";
+import { isModalVisibleAtom, selectedLinkAtom } from "../state";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function Modal() {
   const canvasRef = useRef(null);
   const modalRef = useRef(null);
-  const [isVisible, setIsVisible] = useAtom(isVisibleAtom);
+  const [isVisible, setIsVisible] = useAtom(isModalVisibleAtom);
   const selectedLink = useAtomValue(selectedLinkAtom);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -13,7 +13,6 @@ export default function Modal() {
 
   const handleClick = useCallback(
     (index) => {
-      console.log(index);
       if (index === 0) {
         window.open(selectedLink, "_blank");
         setIsVisible(false);
