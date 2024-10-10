@@ -25,7 +25,8 @@ export default function initGame() {
       u_speed: k.vec2(1, -1),
       u_angle: 45 / 2,
       u_scale: 4,
-      u_aspect: k.width() / k.width(),
+      u_aspect: k.width() / k.height(),
+      u_size: 5,
     })),
     k.pos(0, 0),
     k.fixed(),
@@ -128,6 +129,14 @@ export default function initGame() {
       "Substack",
       "https://jslegenddev.substack.com/"
     );
+
+    newComponent.add([
+      k.text("Contact : jslegend@protonmail.com", {
+        font: "ibm-bold",
+      }),
+      k.color(k.Color.fromHex(PALETTE.color1)),
+      k.pos(400, 500),
+    ]);
   });
   makeSection(k, k.vec2(k.center().x, k.center().y + 400), "Projects");
   makeSection(k, k.vec2(k.center().x - 400, k.center().y), "Skills");
