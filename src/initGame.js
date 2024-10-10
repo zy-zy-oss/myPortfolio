@@ -16,6 +16,8 @@ export default function initGame() {
   k.loadSprite("JavaScript-logo", "/logos/JavaScript-logo.png");
   k.loadShaderURL("tiledPattern", null, "/shaders/tiledPattern.frag");
 
+  k.camScale(k.vec2(k.width() < 400 ? 0.5 : 1));
+
   const tiledBackground = k.add([
     k.uvquad(k.width(), k.height()),
     k.shader("tiledPattern", () => ({
