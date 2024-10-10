@@ -13,6 +13,7 @@ export default function initGame() {
   k.loadSprite("youtube-logo", "/logos/youtube-logo.png");
   k.loadSprite("x-logo", "/logos/x-logo.png");
   k.loadSprite("substack-logo", "/logos/substack-logo.png");
+  k.loadSprite("JavaScript-logo", "/logos/JavaScript-logo.png");
   k.loadShaderURL("tiledPattern", null, "/shaders/tiledPattern.frag");
 
   const tiledBackground = k.add([
