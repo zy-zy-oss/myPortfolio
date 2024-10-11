@@ -5,7 +5,7 @@ import { PALETTE } from "./constants";
 import makeIcon from "./components/Icon";
 import { makeAppear } from "./utils";
 
-export default function initGame() {
+export default async function initGame() {
   const k = makeKaplayCtx();
   k.loadFont("ibm-regular", "/fonts/IBMPlexSans-Regular.ttf");
   k.loadFont("ibm-bold", "/fonts/IBMPlexSans-Bold.ttf");
@@ -19,7 +19,13 @@ export default function initGame() {
   k.loadSprite("react-logo", "/logos/react-logo.png");
   k.loadSprite("nextjs-logo", "/logos/nextjs-logo.png");
   k.loadSprite("postgres-logo", "/logos/postgres-logo.png");
+  k.loadSprite("html-logo", "/logos/html-logo.png");
+  k.loadSprite("css-logo", "/logos/css-logo.png");
+  k.loadSprite("tailwind-logo", "/logos/tailwind-logo.png");
+  k.loadSprite("python-logo", "/logos/python-logo.png");
   k.loadShaderURL("tiledPattern", null, "/shaders/tiledPattern.frag");
+
+  const skillsData = await (await fetch("/configs/skillsData.json")).json();
 
   k.camScale(k.vec2(k.width() < 1000 ? 0.5 : 0.75));
 
@@ -125,7 +131,7 @@ export default function initGame() {
     );
 
     container.add([
-      k.text("Contact : jslegend@protonmail.com", {
+      k.text("Email : jslegend@protonmail.com", {
         font: "ibm-bold",
       }),
       k.color(k.Color.fromHex(PALETTE.color1)),
@@ -137,54 +143,6 @@ export default function initGame() {
   makeSection(k, k.vec2(k.center().x, k.center().y + 400), "Projects");
   makeSection(k, k.vec2(k.center().x - 400, k.center().y), "Skills", (root) => {
     const container = root.add([k.opacity(0), k.pos(-300, 0)]);
-
-    const skillsData = [
-      {
-        pos: { x: 0, y: 0 },
-        name: "JavaScript",
-        logoData: {
-          name: "javascript-logo",
-          width: 128,
-          height: 128,
-        },
-      },
-      {
-        pos: { x: -200, y: 0 },
-        name: "TypeScript",
-        logoData: {
-          name: "typescript-logo",
-          width: 128,
-          height: 128,
-        },
-      },
-      {
-        pos: { x: 0, y: -200 },
-        name: "React",
-        logoData: {
-          name: "react-logo",
-          width: 148,
-          height: 128,
-        },
-      },
-      {
-        pos: { x: 0, y: 200 },
-        name: "Next.js",
-        logoData: {
-          name: "nextjs-logo",
-          width: 128,
-          height: 128,
-        },
-      },
-      {
-        pos: { x: -200, y: 200 },
-        name: "PostgreSQL",
-        logoData: {
-          name: "postgres-logo",
-          width: 128,
-          height: 128,
-        },
-      },
-    ];
 
     for (const skillData of skillsData) {
       makeIcon(
