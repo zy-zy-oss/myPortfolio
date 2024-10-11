@@ -4,8 +4,12 @@ import makeSection from "./components/Section";
 import { PALETTE } from "./constants";
 import makeIcon from "./components/Icon";
 import { makeAppear } from "./utils";
+import makeWorkExperienceCard from "./components/WorkExperienceCard";
 
 export default async function initGame() {
+  const skillsData = await (await fetch("/configs/skillsData.json")).json();
+  const socialsData = await (await fetch("/configs/socialsData.json")).json();
+
   const k = makeKaplayCtx();
   k.loadFont("ibm-regular", "/fonts/IBMPlexSans-Regular.ttf");
   k.loadFont("ibm-bold", "/fonts/IBMPlexSans-Bold.ttf");
@@ -25,10 +29,7 @@ export default async function initGame() {
   k.loadSprite("python-logo", "/logos/python-logo.png");
   k.loadShaderURL("tiledPattern", null, "/shaders/tiledPattern.frag");
 
-  const skillsData = await (await fetch("/configs/skillsData.json")).json();
-  const socialsData = await (await fetch("/configs/socialsData.json")).json();
-
-  k.camScale(k.vec2(k.width() < 1000 ? 0.5 : 0.75));
+  k.camScale(k.vec2(k.width() < 1000 ? 0.5 : 0.8));
 
   const tiledBackground = k.add([
     k.uvquad(k.width(), k.height()),
@@ -52,62 +53,101 @@ export default async function initGame() {
     tiledBackground.uniform.u_aspect = k.width() / k.height();
   });
 
-  makeSection(k, k.vec2(k.center().x, k.center().y - 400), "About", (root) => {
-    const container = root.add([
-      k.text("Hi, I'm JSLegendDev!", { font: "ibm-bold", size: 88 }),
-      k.color(k.Color.fromHex(PALETTE.color1)),
-      k.pos(10, -500),
-      k.opacity(0),
-    ]);
+  makeSection(
+    k,
+    k.vec2(k.center().x, k.center().y - 400),
+    "About",
+    (parent) => {
+      const container = parent.add([
+        k.text("Hi, I'm JSLegendDev!", { font: "ibm-bold", size: 88 }),
+        k.color(k.Color.fromHex(PALETTE.color1)),
+        k.pos(10, -500),
+        k.opacity(0),
+      ]);
 
-    container.add([
-      k.text("A creative software developer", {
-        font: "ibm-bold",
-        size: 48,
-      }),
-      k.color(k.Color.fromHex(PALETTE.color1)),
-      k.pos(5, 100),
-      k.opacity(0),
-    ]);
+      container.add([
+        k.text("A creative software developer", {
+          font: "ibm-bold",
+          size: 48,
+        }),
+        k.color(k.Color.fromHex(PALETTE.color1)),
+        k.pos(5, 100),
+        k.opacity(0),
+      ]);
 
-    for (const socialData of socialsData) {
-      makeIcon(
-        k,
-        container,
-        k.vec2(socialData.pos.x, socialData.pos.y),
-        socialData.logoData,
-        socialData.name,
-        socialData.link
-      );
+      for (const socialData of socialsData) {
+        makeIcon(
+          k,
+          container,
+          k.vec2(socialData.pos.x, socialData.pos.y),
+          socialData.logoData,
+          socialData.name,
+          socialData.link
+        );
+      }
+
+      container.add([
+        k.text("Email : jslegend@protonmail.com", {
+          font: "ibm-bold",
+        }),
+        k.color(k.Color.fromHex(PALETTE.color1)),
+        k.pos(400, 500),
+      ]);
+
+      makeAppear(k, container);
     }
-
-    container.add([
-      k.text("Email : jslegend@protonmail.com", {
-        font: "ibm-bold",
-      }),
-      k.color(k.Color.fromHex(PALETTE.color1)),
-      k.pos(400, 500),
-    ]);
-
-    makeAppear(k, container);
-  });
+  );
   makeSection(k, k.vec2(k.center().x, k.center().y + 400), "Projects");
-  makeSection(k, k.vec2(k.center().x - 400, k.center().y), "Skills", (root) => {
-    const container = root.add([k.opacity(0), k.pos(-300, 0)]);
+  makeSection(
+    k,
+    k.vec2(k.center().x - 400, k.center().y),
+    "Skills",
+    (parent) => {
+      const container = parent.add([k.opacity(0), k.pos(-300, 0)]);
 
-    for (const skillData of skillsData) {
-      makeIcon(
-        k,
-        container,
-        k.vec2(skillData.pos.x, skillData.pos.y),
-        skillData.logoData,
-        skillData.name
-      );
+      for (const skillData of skillsData) {
+        makeIcon(
+          k,
+          container,
+          k.vec2(skillData.pos.x, skillData.pos.y),
+          skillData.logoData,
+          skillData.name
+        );
+      }
+
+      makeAppear(k, container);
     }
+  );
+  makeSection(
+    k,
+    k.vec2(k.center().x + 400, k.center().y),
+    "Work Experience",
+    (parent) => {
+      const container = parent.add([k.opacity(0), k.pos(0)]);
+      makeWorkExperienceCard(k, container, k.vec2(150, -100), {
+        title: "Front-End Software Engineer",
+        description:
+          "Enhanced [REDACTED]'s interactive design platform by building and optimizing prototyping tools, empowering designers to create high-fidelity experiences and bridging the gap between design and development.",
+        company: {
+          name: "[REDACTED]",
+          startDate: "2024",
+          endDate: "Present",
+        },
+      });
+      makeWorkExperienceCard(k, container, k.vec2(150, 180), {
+        title: "Product Software Engineer",
+        description:
+          "Improved [REDACTED]'s real-time design collaboration tool by developing new components and refining existing features, enhancing workflow efficiency and creativity for design teams worldwide.",
+        company: {
+          name: "[REDACTED]",
+          startDate: "2021",
+          endDate: "2023",
+        },
+      });
 
-    makeAppear(k, container);
-  });
-  makeSection(k, k.vec2(k.center().x + 400, k.center().y), "Work Experience");
+      makeAppear(k, container);
+    }
+  );
 
   makePlayer(k, k.vec2(k.center()), 700);
 }
