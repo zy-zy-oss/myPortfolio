@@ -26,6 +26,7 @@ export default async function initGame() {
   k.loadShaderURL("tiledPattern", null, "/shaders/tiledPattern.frag");
 
   const skillsData = await (await fetch("/configs/skillsData.json")).json();
+  const socialsData = await (await fetch("/configs/socialsData.json")).json();
 
   k.camScale(k.vec2(k.width() < 1000 ? 0.5 : 0.75));
 
@@ -69,66 +70,16 @@ export default async function initGame() {
       k.opacity(0),
     ]);
 
-    makeIcon(
-      k,
-      container,
-      k.vec2(300, 250),
-      { name: "github-logo", width: 228.6, height: 179.5 },
-      "GitHub",
-      "https://github.com/jslegenddev"
-    );
-
-    makeIcon(
-      k,
-      container,
-      k.vec2(500, 250),
-      {
-        name: "linkedin-logo",
-        width: 112,
-        height: 100,
-      },
-      "Linkedin",
-      "https://www.linkedin.com/in/js-legenddev-203368332/"
-    );
-
-    makeIcon(
-      k,
-      container,
-      k.vec2(700, 250),
-      {
-        name: "youtube-logo",
-        width: 160,
-        height: 110,
-      },
-      "YouTube",
-      "https://youtube.com/@jslegenddev"
-    );
-
-    makeIcon(
-      k,
-      container,
-      k.vec2(900, 250),
-      {
-        name: "x-logo",
-        width: 128,
-        height: 128,
-      },
-      "X",
-      "https://x.com/jslegenddev"
-    );
-
-    makeIcon(
-      k,
-      container,
-      k.vec2(1100, 250),
-      {
-        name: "substack-logo",
-        width: 128,
-        height: 128,
-      },
-      "Substack",
-      "https://jslegenddev.substack.com/"
-    );
+    for (const socialData of socialsData) {
+      makeIcon(
+        k,
+        container,
+        k.vec2(socialData.pos.x, socialData.pos.y),
+        socialData.logoData,
+        socialData.name,
+        socialData.link
+      );
+    }
 
     container.add([
       k.text("Email : jslegend@protonmail.com", {
