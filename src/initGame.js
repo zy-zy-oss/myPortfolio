@@ -9,6 +9,7 @@ import makeWorkExperienceCard from "./components/WorkExperienceCard";
 import makeEmailIcon from "./components/EmailIcon";
 
 export default async function initGame() {
+  const generalData = await (await fetch("/configs/generalData.json")).json();
   const skillsData = await (await fetch("/configs/skillsData.json")).json();
   const socialsData = await (await fetch("/configs/socialsData.json")).json();
   const experiencesData = await (
@@ -62,24 +63,24 @@ export default async function initGame() {
   makeSection(
     k,
     k.vec2(k.center().x, k.center().y - 400),
-    "About",
+    generalData.section1Name,
     (parent) => {
       const container = parent.add([k.pos(-730, -700), k.opacity(0)]);
 
       container.add([
-        k.text("Hi, I'm JSLegendDev!", { font: "ibm-bold", size: 88 }),
+        k.text(generalData.header.title, { font: "ibm-bold", size: 88 }),
         k.color(k.Color.fromHex(PALETTE.color1)),
-        k.pos(400, 0),
+        k.pos(395, 0),
         k.opacity(0),
       ]);
 
       container.add([
-        k.text("A creative software developer", {
+        k.text(generalData.header.subtitle, {
           font: "ibm-bold",
           size: 48,
         }),
         k.color(k.Color.fromHex(PALETTE.color1)),
-        k.pos(495, 100),
+        k.pos(485, 100),
         k.opacity(0),
       ]);
 
@@ -110,11 +111,10 @@ export default async function initGame() {
       makeAppear(k, container);
     }
   );
-  makeSection(k, k.vec2(k.center().x, k.center().y + 400), "Projects");
   makeSection(
     k,
     k.vec2(k.center().x - 400, k.center().y),
-    "Skills",
+    generalData.section2Name,
     (parent) => {
       const container = parent.add([k.opacity(0), k.pos(-300, 0)]);
 
@@ -134,7 +134,7 @@ export default async function initGame() {
   makeSection(
     k,
     k.vec2(k.center().x + 400, k.center().y),
-    "Work Experience",
+    generalData.section3Name,
     (parent) => {
       const container = parent.add([k.opacity(0), k.pos(0)]);
       for (const experienceData of experiencesData) {
@@ -142,12 +142,18 @@ export default async function initGame() {
           k,
           container,
           k.vec2(experienceData.pos.x, experienceData.pos.y),
+          experienceData.cardHeight,
           experienceData.roleData
         );
       }
 
       makeAppear(k, container);
     }
+  );
+  makeSection(
+    k,
+    k.vec2(k.center().x, k.center().y + 400),
+    generalData.section4Name
   );
 
   makePlayer(k, k.vec2(k.center()), 700);
