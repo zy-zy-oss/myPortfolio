@@ -66,7 +66,7 @@ export default async function initGame() {
       container.add([
         k.text("Hi, I'm JSLegendDev!", { font: "ibm-bold", size: 88 }),
         k.color(k.Color.fromHex(PALETTE.color1)),
-        k.pos(300, 0),
+        k.pos(400, 0),
         k.opacity(0),
       ]);
 
@@ -76,7 +76,7 @@ export default async function initGame() {
           size: 48,
         }),
         k.color(k.Color.fromHex(PALETTE.color1)),
-        k.pos(305, 100),
+        k.pos(495, 100),
         k.opacity(0),
       ]);
 
