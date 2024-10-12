@@ -65,7 +65,7 @@ export default async function initGame() {
     k.vec2(k.center().x, k.center().y - 400),
     generalData.section1Name,
     (parent) => {
-      const container = parent.add([k.pos(-730, -700), k.opacity(0)]);
+      const container = parent.add([k.pos(-805, -700), k.opacity(0)]);
 
       container.add([
         k.text(generalData.header.title, { font: "ibm-bold", size: 88 }),
