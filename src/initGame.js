@@ -11,6 +11,9 @@ import makeEmailIcon from "./components/EmailIcon";
 export default async function initGame() {
   const skillsData = await (await fetch("/configs/skillsData.json")).json();
   const socialsData = await (await fetch("/configs/socialsData.json")).json();
+  const experiencesData = await (
+    await fetch("/configs/experiencesData.json")
+  ).json();
 
   const k = makeKaplayCtx();
   k.loadFont("ibm-regular", "/fonts/IBMPlexSans-Regular.ttf");
@@ -81,28 +84,28 @@ export default async function initGame() {
       ]);
 
       for (const socialData of socialsData) {
+        if (socialData.name === "Email") {
+          makeEmailIcon(
+            k,
+            container,
+            k.vec2(1300, 250),
+            socialData.logoData,
+            socialData.name,
+            socialData.address
+          );
+          continue;
+        }
+
         makeSocialIcon(
           k,
           container,
           k.vec2(socialData.pos.x, socialData.pos.y),
           socialData.logoData,
           socialData.name,
-          socialData.link
+          socialData.link,
+          socialData.description
         );
       }
-
-      makeEmailIcon(
-        k,
-        container,
-        k.vec2(1300, 250),
-        {
-          name: "email-logo",
-          width: 128,
-          height: 128,
-        },
-        "Email",
-        "jslegend@protonmail.com"
-      );
 
       makeAppear(k, container);
     }
@@ -134,26 +137,14 @@ export default async function initGame() {
     "Work Experience",
     (parent) => {
       const container = parent.add([k.opacity(0), k.pos(0)]);
-      makeWorkExperienceCard(k, container, k.vec2(150, -100), {
-        title: "Front-End Software Engineer",
-        description:
-          "Enhanced [REDACTED]'s interactive design platform by building and optimizing prototyping tools, empowering designers to create high-fidelity experiences and bridging the gap between design and development.",
-        company: {
-          name: "[REDACTED]",
-          startDate: "2024",
-          endDate: "Present",
-        },
-      });
-      makeWorkExperienceCard(k, container, k.vec2(150, 180), {
-        title: "Product Software Engineer",
-        description:
-          "Improved [REDACTED]'s real-time design collaboration tool by developing new components and refining existing features, enhancing workflow efficiency and creativity for design teams worldwide.",
-        company: {
-          name: "[REDACTED]",
-          startDate: "2021",
-          endDate: "2023",
-        },
-      });
+      for (const experienceData of experiencesData) {
+        makeWorkExperienceCard(
+          k,
+          container,
+          k.vec2(experienceData.pos.x, experienceData.pos.y),
+          experienceData.roleData
+        );
+      }
 
       makeAppear(k, container);
     }
