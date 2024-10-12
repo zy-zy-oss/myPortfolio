@@ -4,9 +4,10 @@ import makeSection from "./components/Section";
 import { PALETTE } from "./constants";
 import makeSocialIcon from "./components/SocialIcon";
 import makeSkillIcon from "./components/SkillIcon";
-import { makeAppear } from "./utils";
+import { makeAppear, opacityTrickleDown } from "./utils";
 import makeWorkExperienceCard from "./components/WorkExperienceCard";
 import makeEmailIcon from "./components/EmailIcon";
+import makeProjectCard from "./components/ProjectCard";
 
 export default async function initGame() {
   const generalData = await (await fetch("/configs/generalData.json")).json();
@@ -87,11 +88,13 @@ export default async function initGame() {
         k.opacity(0),
       ]);
 
+      const socialContainer = container.add([k.pos(0, 0), k.opacity(0)]);
+
       for (const socialData of socialsData) {
         if (socialData.name === "Email") {
           makeEmailIcon(
             k,
-            container,
+            socialContainer,
             k.vec2(1300, 250),
             socialData.logoData,
             socialData.name,
@@ -102,7 +105,7 @@ export default async function initGame() {
 
         makeSocialIcon(
           k,
-          container,
+          socialContainer,
           k.vec2(socialData.pos.x, socialData.pos.y),
           socialData.logoData,
           socialData.name,
@@ -156,7 +159,32 @@ export default async function initGame() {
   makeSection(
     k,
     k.vec2(k.center().x, k.center().y + 400),
-    generalData.section4Name
+    generalData.section4Name,
+    (parent) => {
+      makeProjectCard(
+        k,
+        parent,
+        k.vec2(0, 350),
+        "JavaScript Sonic Themed Infinite Runnner Game",
+        "sonic-js"
+      );
+
+      makeProjectCard(
+        k,
+        parent,
+        k.vec2(0, 840),
+        "TypeScript Kirby-like Game",
+        "kirby-ts"
+      );
+
+      makeProjectCard(
+        k,
+        parent,
+        k.vec2(0, 1320),
+        "JavaScript Platformer Game",
+        "platformer-js"
+      );
+    }
   );
 
   makePlayer(k, k.vec2(k.center()), 700);
