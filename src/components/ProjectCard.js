@@ -17,7 +17,7 @@ export default function makeProjectCard(k, parent, posVec2, title, imageName) {
     k.opacity(0),
   ]);
 
-  card.add([
+  const cardTitle = card.add([
     k.text(title, { font: "ibm-bold", size: 32, width: 600, lineSpacing: 12 }),
     k.color(k.Color.fromHex(PALETTE.color1)),
     k.pos(-310, 200),
@@ -37,7 +37,7 @@ export default function makeProjectCard(k, parent, posVec2, title, imageName) {
     console.log("Project modal with more details should open");
   });
 
-  opacityTrickleDown(parent, [cardMask, image, cardSwitch]);
+  opacityTrickleDown(parent, [cardMask, image, cardTitle, cardSwitch]);
 
   return card;
 }
