@@ -20,4 +20,6 @@ export const keyboardInputAtom = atom({
 
 export const areTouchControlsEnabledAtom = atom(false);
 
+export const cameraZoomValueAtom = atom({ value: 1 });
+
 export const store = createStore();

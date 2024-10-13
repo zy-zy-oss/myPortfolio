@@ -20,8 +20,10 @@ export default function makePlayer(k, posVec2, speed) {
     },
   ]);
 
+  const DPadInput = store.get(DPadInputAtom);
+  const keyboardInput = store.get(keyboardInputAtom);
+
   window.addEventListener("keydown", (e) => {
-    const keyboardInput = store.get(keyboardInputAtom);
     if (e.code === "KeyW" || e.code === "ArrowUp") {
       keyboardInput.isUpPressed = true;
     }
@@ -42,7 +44,6 @@ export default function makePlayer(k, posVec2, speed) {
   });
 
   window.addEventListener("keyup", (e) => {
-    const keyboardInput = store.get(keyboardInputAtom);
     if (e.code === "KeyW" || e.code === "ArrowUp") {
       keyboardInput.isUpPressed = false;
     }
@@ -63,6 +64,9 @@ export default function makePlayer(k, posVec2, speed) {
   });
 
   player.onUpdate(() => {
+    const DPadInput = store.get(DPadInputAtom);
+    const keyboardInput = store.get(keyboardInputAtom);
+
     if (!k.camPos().eq(player.pos)) {
       k.tween(
         k.camPos(),
@@ -88,9 +92,6 @@ export default function makePlayer(k, posVec2, speed) {
       });
       return;
     }
-
-    const DPadInput = store.get(DPadInputAtom);
-    const keyboardInput = store.get(keyboardInputAtom);
 
     player.direction = k.vec2(0, 0);
     if (keyboardInput.isLeftPressed || DPadInput.isLeftPressed)
