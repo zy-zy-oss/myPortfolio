@@ -8,10 +8,10 @@ import {
 
 export default function makePlayer(k, posVec2, speed) {
   const player = k.add([
-    k.rect(60, 60),
+    k.sprite("player", { anim: "idle" }),
+    k.scale(8),
     k.anchor("center"),
-    k.area(),
-    k.outline(6),
+    k.area({ shape: new k.Rect(k.vec2(0), 5, 5) }),
     k.body(),
     k.pos(posVec2),
     "player",

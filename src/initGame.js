@@ -101,6 +101,13 @@ export default async function initGame() {
   k.loadSprite("sonic-js", "/projects/sonic-js.png");
   k.loadSprite("kirby-ts", "/projects/kirby-ts.png");
   k.loadSprite("platformer-js", "/projects/platformer-js.png");
+  k.loadSprite("player", "/sprites/player.png", {
+    sliceX: 4,
+    sliceY: 8,
+    anims: {
+      idle: 0,
+    },
+  });
   k.loadShaderURL("tiledPattern", null, "/shaders/tiledPattern.frag");
 
   setKeyboardControls();
