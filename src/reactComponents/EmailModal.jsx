@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useAtom, useAtomValue } from "jotai";
 import {
   isEmailModalVisibleAtom,
