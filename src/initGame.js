@@ -150,8 +150,6 @@ export default async function initGame() {
       u_color1: k.Color.fromHex(PALETTE.color3),
       u_color2: k.Color.fromHex(PALETTE.color2),
       u_speed: k.vec2(1, -1),
-      u_angle: 45 / 2,
-      u_scale: 4,
       u_aspect: k.width() / k.height(),
       u_size: 5,
     })),
