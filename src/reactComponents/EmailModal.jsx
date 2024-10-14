@@ -7,9 +7,6 @@ import {
 } from "../store";
 
 export default function EmailModal() {
-  const canvasRef = useRef(null);
-  const modalRef = useRef(null);
-
   const areTouchControlsEnabled = useAtomValue(areTouchControlsEnabledAtom);
   const [isVisible, setIsVisible] = useAtom(isEmailModalVisibleAtom);
   const email = useAtomValue(emailAtom);
@@ -28,7 +25,6 @@ export default function EmailModal() {
       }
 
       setIsVisible(false);
-      canvasRef.current.focus();
     },
     [email, setIsVisible]
   );
@@ -62,14 +58,9 @@ export default function EmailModal() {
     };
   }, [keyboardControls, areTouchControlsEnabled, isVisible]);
 
-  useEffect(() => {
-    if (!canvasRef.current) return;
-    canvasRef.current = document.getElementsByTagName("canvas")[0];
-  }, [isVisible]);
-
   return (
     isVisible && (
-      <div ref={modalRef} className="modal">
+      <div className="modal">
         <div className="modal-content">
           <h1>Copy my email to your clipboard?</h1>
           <span>{email}</span>
