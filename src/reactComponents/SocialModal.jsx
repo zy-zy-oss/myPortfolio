@@ -52,6 +52,7 @@ export default function SocialModal() {
   );
 
   useEffect(() => {
+    if (!isVisible) return;
     if (areTouchControlsEnabled) return;
 
     window.addEventListener("keydown", keyboardControls);
@@ -59,12 +60,11 @@ export default function SocialModal() {
     return () => {
       window.removeEventListener("keydown", keyboardControls);
     };
-  }, [selectedIndex, keyboardControls, areTouchControlsEnabled]);
+  }, [keyboardControls, areTouchControlsEnabled, isVisible]);
 
   useEffect(() => {
-    if (!canvasRef.current) {
-      canvasRef.current = document.getElementsByTagName("canvas")[0];
-    }
+    if (!canvasRef.current) return;
+    canvasRef.current = document.getElementsByTagName("canvas")[0];
   }, [isVisible]);
 
   return (
