@@ -20,50 +20,6 @@ export default function makePlayer(k, posVec2, speed) {
     },
   ]);
 
-  window.addEventListener("keydown", (e) => {
-    const keyboardInput = store.get(keyboardInputAtom);
-
-    if (e.code === "KeyW" || e.code === "ArrowUp") {
-      keyboardInput.isUpPressed = true;
-    }
-
-    if (e.code === "KeyS" || e.code === "ArrowDown") {
-      keyboardInput.isDownPressed = true;
-    }
-
-    if (e.code === "KeyA" || e.code === "ArrowLeft") {
-      keyboardInput.isLeftPressed = true;
-    }
-
-    if (e.code === "KeyD" || e.code === "ArrowRight") {
-      keyboardInput.isRightPressed = true;
-    }
-
-    store.set(keyboardInputAtom, keyboardInput);
-  });
-
-  window.addEventListener("keyup", (e) => {
-    const keyboardInput = store.get(keyboardInputAtom);
-
-    if (e.code === "KeyW" || e.code === "ArrowUp") {
-      keyboardInput.isUpPressed = false;
-    }
-
-    if (e.code === "KeyS" || e.code === "ArrowDown") {
-      keyboardInput.isDownPressed = false;
-    }
-
-    if (e.code === "KeyA" || e.code === "ArrowLeft") {
-      keyboardInput.isLeftPressed = false;
-    }
-
-    if (e.code === "KeyD" || e.code === "ArrowRight") {
-      keyboardInput.isRightPressed = false;
-    }
-
-    store.set(keyboardInputAtom, keyboardInput);
-  });
-
   player.onUpdate(() => {
     const DPadInput = store.get(DPadInputAtom);
     const keyboardInput = store.get(keyboardInputAtom);
