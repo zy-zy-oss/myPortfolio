@@ -2,6 +2,7 @@ import { DIAGONAL_FACTOR } from "../constants";
 import {
   DPadInputAtom,
   isEmailModalVisibleAtom,
+  isProjectModalVisibleAtom,
   isSocialModalVisibleAtom,
   keyboardInputAtom,
   store,
@@ -37,7 +38,8 @@ export default function makePlayer(k, posVec2, speed) {
 
     if (
       store.get(isSocialModalVisibleAtom) ||
-      store.get(isEmailModalVisibleAtom)
+      store.get(isEmailModalVisibleAtom) ||
+      store.get(isProjectModalVisibleAtom)
     ) {
       store.set(DPadInputAtom, {
         isLeftPressed: false,
