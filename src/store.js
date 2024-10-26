@@ -13,20 +13,6 @@ export const chosenProjectDataAtom = atom({
   links: [{ id: 0, name: "", link: "" }],
 });
 
-export const DPadInputAtom = atom({
-  isLeftPressed: false,
-  isRightPressed: false,
-  isUpPressed: false,
-  isDownPressed: false,
-});
-
-export const keyboardInputAtom = atom({
-  isLeftPressed: false,
-  isRightPressed: false,
-  isUpPressed: false,
-  isDownPressed: false,
-});
-
 export const areTouchControlsEnabledAtom = atom(false);
 
 export const cameraZoomValueAtom = atom({ value: 1 });
