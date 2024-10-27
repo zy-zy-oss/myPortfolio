@@ -36,10 +36,6 @@ html {
   background-color: var(--color1);
 }
 
-#ui {
-  pointer-events: none;
-}
-
 .modal {
   display: flex;
   justify-content: center;
@@ -116,7 +112,6 @@ p {
   border-radius: 12px;
   font-size: 2rem;
   width: 12vw;
-  pointer-events: auto;
 }
 
 .controls-message {

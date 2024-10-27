@@ -34,6 +34,14 @@ export default function makePlayer(k, posVec2, speed) {
     isMouseDown = false;
   });
 
+  game.addEventListener("touchstart", () => {
+    isMouseDown = true;
+  });
+
+  game.addEventListener("touchend", () => {
+    isMouseDown = false;
+  });
+
   player.onUpdate(() => {
     if (!k.camPos().eq(player.pos)) {
       k.tween(

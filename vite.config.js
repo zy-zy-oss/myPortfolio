@@ -5,5 +5,5 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   base: "/new-2d-portfolio",
   plugins: [react()],
-  assetsInclude: ["**/*.ttf"],
+  //assetsInclude: ["**/*.ttf"],
 });
