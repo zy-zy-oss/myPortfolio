@@ -11,7 +11,9 @@ import makeProjectCard from "./components/ProjectCard";
 import { cameraZoomValueAtom, store } from "./store";
 
 export default async function initGame() {
-  const generalData = await (await fetch("/configs/generalData.json")).json();
+  const response = await fetch("/configs/generalData.json");
+  console.log(response);
+  const generalData = await response.json();
   const skillsData = await (await fetch("/configs/skillsData.json")).json();
   const socialsData = await (await fetch("/configs/socialsData.json")).json();
   const experiencesData = await (
