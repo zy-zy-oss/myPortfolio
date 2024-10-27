@@ -43,25 +43,6 @@ html {
   padding-right: 1vw;
 }
 
-.title {
-  padding-left: 1vw;
-  padding-right: 1vw;
-  text-align: center;
-  color: var(--color2);
-}
-
-.settings-btn {
-  font: inherit;
-  font-size: 1.5rem;
-  margin-top: 1vh;
-  height: 20vh;
-  background-color: var(--color2);
-  border-color: var(--color2);
-  border-radius: 5px;
-  color: var(--color1);
-  border: none;
-}
-
 .modal {
   display: flex;
   justify-content: center;
@@ -108,10 +89,6 @@ html {
   background-color: var(--color4);
 }
 
-.active {
-  background-color: var(--color4);
-}
-
 .modal-content > h1,
 span,
 p {
@@ -146,6 +123,7 @@ p {
 
 .controls-message {
   position: fixed;
+  color: var(--color1);
   top: 3vh;
   left: 5vw;
   opacity: 0.4;

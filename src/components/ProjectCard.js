@@ -6,7 +6,7 @@ import {
 } from "../store";
 import { opacityTrickleDown } from "../utils";
 
-export default function makeProjectCard(k, parent, posVec2, data, imageName) {
+export default function makeProjectCard(k, parent, posVec2, data, thumbnail) {
   const card = parent.add([k.anchor("center"), k.pos(posVec2), k.opacity(0)]);
 
   const cardMask = card.add([
@@ -17,7 +17,7 @@ export default function makeProjectCard(k, parent, posVec2, data, imageName) {
   ]);
 
   const image = cardMask.add([
-    k.sprite(imageName, { width: 640, height: 360 }),
+    k.sprite(thumbnail, { width: 640, height: 360 }),
     k.anchor("center"),
     k.opacity(0),
   ]);

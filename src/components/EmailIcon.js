@@ -25,6 +25,7 @@ export default function makeEmailIcon(
     k.anchor("center"),
     k.area(),
     k.pos(0, 150),
+    k.opacity(0),
   ]);
 
   emailSwitch.onCollide("player", () => {

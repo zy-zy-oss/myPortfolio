@@ -31,6 +31,7 @@ export default function makeSocialIcon(
     k.anchor("center"),
     k.area(),
     k.pos(0, 150),
+    k.opacity(0),
   ]);
 
   linkSwitch.onCollide("player", () => {

@@ -17,6 +17,7 @@ export default async function initGame() {
   const experiencesData = await (
     await fetch("/configs/experiencesData.json")
   ).json();
+  const projectsData = await (await fetch("/configs/projectsData.json")).json();
 
   const k = makeKaplayCtx();
   k.loadFont("ibm-regular", "/fonts/IBMPlexSans-Regular.ttf");
@@ -205,71 +206,16 @@ export default async function initGame() {
     generalData.section4Name,
     (parent) => {
       const container = parent.add([k.opacity(0), k.pos(0, 0)]);
-      makeProjectCard(
-        k,
-        container,
-        k.vec2(0, 350),
-        {
-          title: "JavaScript Sonic Themed Infinite Runnner Game",
-          links: [
-            {
-              id: 0,
-              name: "Live Demo",
-              link: "https://jslegend.itch.io/sonic-ring-run",
-            },
-            {
-              id: 1,
-              name: "Source Code",
-              link: "https://github.com/JSLegendDev/sonic-runner",
-            },
-          ],
-        },
-        "sonic-js"
-      );
 
-      makeProjectCard(
-        k,
-        container,
-        k.vec2(0, 840),
-        {
-          title: "TypeScript Kirby-like Game",
-          links: [
-            {
-              id: 0,
-              name: "Live Demo",
-              link: "https://jslegend.itch.io/kirby-like-platformer-asset-pack",
-            },
-            {
-              id: 1,
-              name: "Source Code",
-              link: "https://github.com/JSLegendDev/Kirby-like-ts",
-            },
-          ],
-        },
-        "kirby-ts"
-      );
-
-      makeProjectCard(
-        k,
-        container,
-        k.vec2(0, 1320),
-        {
-          title: "JavaScript Platformer Game",
-          links: [
-            {
-              id: 0,
-              name: "Live Demo",
-              link: "https://jslegend.itch.io/mario-like-in-javascript",
-            },
-            {
-              id: 1,
-              name: "Source Code",
-              link: "https://github.com/JSLegendDev/Mario-Game-Kaboom.js",
-            },
-          ],
-        },
-        "platformer-js"
-      );
+      for (const project of projectsData) {
+        makeProjectCard(
+          k,
+          container,
+          k.vec2(project.pos.x, project.pos.y),
+          project.data,
+          project.thumbnail
+        );
+      }
 
       makeAppear(k, container);
     }
