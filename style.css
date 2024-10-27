@@ -100,7 +100,6 @@ p {
   top: 5vh;
   right: 5vw;
   z-index: 1;
-  opacity: 0.4;
   gap: 1vh;
 }
 
@@ -112,6 +111,11 @@ p {
   border-radius: 12px;
   font-size: 2rem;
   width: 12vw;
+  opacity: 0.4;
+}
+
+.camera-controller-btn:active {
+  opacity: 1;
 }
 
 .controls-message {
