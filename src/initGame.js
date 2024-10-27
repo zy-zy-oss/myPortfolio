@@ -29,8 +29,8 @@ export default async function initGame() {
   k.loadSprite("youtube-logo", "./logos/youtube-logo.png");
   k.loadSprite("x-logo", "./logos/x-logo.png");
   k.loadSprite("substack-logo", "./logos/substack-logo.png");
-  k.loadSprite("javascript-logo", "./logos/javascript-logo.png");
-  k.loadSprite("typescript-logo", "./logos/typescript-logo.png");
+  k.loadSprite("javascript-logo", "./logos/js-logo.png");
+  k.loadSprite("typescript-logo", "./logos/ts-logo.png");
   k.loadSprite("react-logo", "./logos/react-logo.png");
   k.loadSprite("nextjs-logo", "./logos/nextjs-logo.png");
   k.loadSprite("postgres-logo", "./logos/postgres-logo.png");
