@@ -36,11 +36,8 @@ html {
   background-color: var(--color1);
 }
 
-#settings {
-  display: flex;
-  flex-direction: column;
-  padding-left: 1vw;
-  padding-right: 1vw;
+#ui {
+  pointer-events: none;
 }
 
 .modal {
@@ -119,6 +116,7 @@ p {
   border-radius: 12px;
   font-size: 2rem;
   width: 12vw;
+  pointer-events: auto;
 }
 
 .controls-message {

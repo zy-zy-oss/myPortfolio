@@ -5,7 +5,7 @@ export default function makeKaplayCtx() {
     global: false,
     pixelDensity: 2,
     touchToMouse: true,
-    debug: true, // TODO: set this back to false in prod
+    debug: false,
     debugKey: "f1",
     canvas: document.getElementById("game"),
   });
