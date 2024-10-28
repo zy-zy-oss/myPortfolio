@@ -15,6 +15,7 @@ export default function makeWorkExperienceCard(
     k.pos(posVec2),
     k.color(k.Color.fromHex(PALETTE.color2)),
     k.opacity(0),
+    k.offscreen({ hide: true, distance: 300 }),
   ]);
 
   const title = card.add([

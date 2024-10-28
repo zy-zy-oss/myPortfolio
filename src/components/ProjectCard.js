@@ -7,7 +7,12 @@ import {
 import { opacityTrickleDown } from "../utils";
 
 export default function makeProjectCard(k, parent, posVec2, data, thumbnail) {
-  const card = parent.add([k.anchor("center"), k.pos(posVec2), k.opacity(0)]);
+  const card = parent.add([
+    k.anchor("center"),
+    k.pos(posVec2),
+    k.opacity(0),
+    k.offscreen({ hide: true, distance: 300 }),
+  ]);
 
   const cardMask = card.add([
     k.rect(640, 360, { radius: 10 }),
