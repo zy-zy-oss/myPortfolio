@@ -11,7 +11,7 @@ export default function makeProjectCard(k, parent, posVec2, data, thumbnail) {
     k.anchor("center"),
     k.pos(posVec2),
     k.opacity(0),
-    //k.offscreen({ hide: true, distance: 300 }),
+    k.offscreen({ hide: true, distance: 300 }),
   ]);
 
   const cardMask = card.add([
