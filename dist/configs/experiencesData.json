@@ -1,0 +1,41 @@
+[
+  {
+    "pos": { "x": 150, "y": -100 },
+    "cardHeight": 250,
+    "roleData": {
+      "title": "软件工程 硕士 ",
+      "description": "想努力学点东西",
+      "company": {
+        "name": "西北工业大学（985）",
+        "startDate": "2024",
+        "endDate": "Present"
+      }
+    }
+  },
+  {
+    "pos": { "x": 150, "y": 180 },
+    "cardHeight": 250,
+    "roleData": {
+      "title": "计算机科学与技术 本科",
+      "description": "好像没学什么东西",
+      "company": {
+        "name": "东北林业大学(211)",
+        "startDate": "2019",
+        "endDate": "2023"
+      }
+    }
+  },
+  {
+    "pos": { "x": 150, "y": 480 },
+    "cardHeight": 250,
+    "roleData": {
+      "title": "需要一份实习",
+      "description": "想实习",
+      "company": {
+        "name": "互联网公司",
+        "startDate": "now",
+        "endDate": "now"
+      }
+    }
+  }
+]
