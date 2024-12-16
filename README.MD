@@ -1,13 +1,12 @@
-# A Developer Portfolio as a 2D Game With React + Kaplay
+![1734343014022](https://file+.vscode-resource.vscode-cdn.net/Users/yuzhang/Desktop/try/2dpotofolia-react/new-2d-portfolio/image/README/1734343014022.png)
 
-This is a developer portfolio website made as a 2D game with React and the Kaplay library.
+npm create vite@latest
 
-Live demo : https://jslegenddev.github.io/new-2d-portfolio/
+lsect react and javascript
 
-Tutorial explaining how to build this : (TBD)
+npm install kaplay@3001
 
+在public 加入静态文件	
 
+npm instal jotai@2.10.0  #状态管理工具
 
-## CREDITS
-
-Player character asset is a slightly modified version of the asset hosted here :  https://gibbongl.itch.io/8-directional-gameboy-character-template

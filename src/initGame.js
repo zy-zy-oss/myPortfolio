@@ -23,27 +23,35 @@ export default async function initGame() {
 
   const k = makeKaplayCtx();
   k.loadSprite("player", "./sprites/player.png", {
-    sliceX: 4,
-    sliceY: 8,
-    anims: {
-      "walk-down-idle": 0,
-      "walk-down": { from: 0, to: 3, loop: true },
-      "walk-left-down": { from: 4, to: 7, loop: true },
-      "walk-left-down-idle": 4,
-      "walk-left": { from: 8, to: 11, loop: true },
-      "walk-left-idle": 8,
-      "walk-left-up": { from: 12, to: 15, loop: true },
-      "walk-left-up-idle": 12,
-      "walk-up": { from: 16, to: 19, loop: true },
-      "walk-up-idle": 16,
-      "walk-right-up": { from: 20, to: 23, loop: true },
-      "walk-right-up-idle": 20,
-      "walk-right": { from: 24, to: 27, loop: true },
-      "walk-right-idle": 24,
-      "walk-right-down": { from: 28, to: 31, loop: true },
-      "walk-right-down-idle": 28,
-    },
-  });
+  sliceX: 6,  // 切分X方向的格数
+  sliceY: 16, // 切分Y方向的格数
+  anims: {
+    "walk-left-down": { from: 0, to: 11, loop: true },
+    "walk-left-down-idle": 5,  // Down Left idle
+
+    "walk-left": { from: 12, to: 23, loop: true },
+    "walk-left-idle": 17,  // Left idle
+
+    "walk-left-up": { from: 24, to: 35, loop: true },
+    "walk-left-up-idle": 29,  // Up Left idle
+
+    "walk-up": { from: 36, to: 47, loop: true },
+    "walk-up-idle": 41,  // Up idle
+
+    "walk-right-up": { from: 48, to: 59, loop: true },
+    "walk-right-up-idle": 53,  // Up Right idle
+
+    "walk-right": { from: 60, to: 71, loop: true },
+    "walk-right-idle": 65,  // Right idle
+
+    "walk-right-down": { from: 72, to: 83, loop: true },
+    "walk-right-down-idle": 77,  // Down Right idle
+
+    "walk-down": { from: 84, to: 95, loop: true },
+    "walk-down-idle": 89,  // Down idle
+  },
+});
+
   k.loadFont("ibm-regular", "./fonts/IBMPlexSans-Regular.ttf");
   k.loadFont("ibm-bold", "./fonts/IBMPlexSans-Bold.ttf");
   k.loadSprite("github-logo", "./logos/github-logo.png");
@@ -121,7 +129,7 @@ export default async function initGame() {
           font: "ibm-bold",
           size: 48,
         }),
-        k.color(k.Color.fromHex(PALETTE.color1)),
+        k.color(k.Color.fromHex('#ffffff')),
         k.pos(485, 100),
         k.opacity(0),
       ]);

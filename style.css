@@ -20,10 +20,10 @@
 :root {
   font-family: "ibm-bold";
   font-size: 1em;
-  --color1: #272946;
-  --color2: #aaea6c;
-  --color3: #e7ffee;
-  --color4: #3f416c;
+  --color1: #ffffff;
+  --color2: #d1bfb3;
+  --color3: #ab8a81;
+  --color4: #543228;
 }
 
 body,

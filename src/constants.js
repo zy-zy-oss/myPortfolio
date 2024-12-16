@@ -1,7 +1,7 @@
 export const PALETTE = {
-  color1: "#272946",
-  color2: "#aaea6c",
-  color3: "#e7ffee",
+  color1: "#d7e589",
+  color2: "#b0c277",
+  color3: "#617c52",
 };
 
 export const DIAGONAL_FACTOR = 1 / Math.sqrt(2);

@@ -9,7 +9,7 @@ import {
 export default function makePlayer(k, posVec2, speed) {
   const player = k.add([
     k.sprite("player", { anim: "walk-down" }),
-    k.scale(8),
+    k.scale(2),
     k.anchor("center"),
     k.area({ shape: new k.Rect(k.vec2(0), 5, 10) }),
     k.body(),
@@ -17,7 +17,7 @@ export default function makePlayer(k, posVec2, speed) {
     "player",
     {
       direction: k.vec2(0, 0),
-      directionName: "walk-down",
+      directionName: "walk-down",  // 初始动画是 "walk-down"
     },
   ]);
 
@@ -67,14 +67,16 @@ export default function makePlayer(k, posVec2, speed) {
       player.direction = worldMousePos.sub(player.pos).unit();
     }
 
-    if (
-      player.direction.eq(k.vec2(0, 0)) &&
-      !player.getCurAnim().name.includes("idle")
-    ) {
-      player.play(`${player.directionName}-idle`);
-      return;
+    // 如果玩家没有移动，就播放对应方向的 idle 动画
+    if (player.direction.eq(k.vec2(0, 0))) {
+      // 如果当前的动画不是 idle，就播放 idle 动画
+      if (!player.getCurAnim().name.includes("idle")) {
+        player.play(`${player.directionName}-idle`);
+      }
+      return;  // 如果静止，直接返回，不继续执行其他逻辑
     }
 
+    // 根据方向设置 animation 名称
     if (
       player.direction.x > 0 &&
       player.direction.y > -0.5 &&
@@ -124,10 +126,12 @@ export default function makePlayer(k, posVec2, speed) {
     )
       player.directionName = "walk-right-down";
 
+    // 如果当前动画和目标方向不同，则切换到新的动画
     if (player.getCurAnim().name !== player.directionName) {
       player.play(player.directionName);
     }
 
+    // 玩家移动
     if (player.direction.x && player.direction.y) {
       player.move(player.direction.scale(DIAGONAL_FACTOR * speed));
       return;
