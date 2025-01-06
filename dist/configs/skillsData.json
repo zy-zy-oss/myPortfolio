@@ -28,9 +28,9 @@
   },
   {
     "pos": { "x": 0, "y": 200 },
-    "name": "Next.js",
+    "name": "Vue",
     "logoData": {
-      "name": "nextjs-logo",
+      "name": "vue-logo",
       "width": 128,
       "height": 128
     }
